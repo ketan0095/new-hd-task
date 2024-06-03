@@ -18,61 +18,64 @@ pipeline {
             steps {
 
                 echo "Build Stage"
-                script {
-                    // Install dependencies and build the project
-                    sh 'npm install'
-                    sh 'npm run build'
-                }
+                // script {
+                //     // Install dependencies and build the project
+                //     sh 'npm install'
+                //     sh 'npm run build'
+                // }
             }
         }
 
         stage('Test') {
 
             echo "Test Stage"
-            steps {
-                script {
-                    // Run tests
-                    // Run Selenium tests
-                    sh 'npm run test:selenium'
-                }
-            }
+            // steps {
+            //     script {
+            //         // Run tests
+            //         // Run Selenium tests
+            //         sh 'npm run test:selenium'
+            //     }
+            // }
         }
 
         stage('Deploy') {
             steps {
-                script {
-                    // Deploy the build to your server or environment
-                    // This is a placeholder and should be replaced with your actual deployment commands
-                    sh '''
-                    echo "Deploying application..."
-                    # Example deployment command:
-                    # scp -r ./* user@your-server:/path/to/deployment
-                    '''
-                }
+                echo "Deploy Stage"
+                // script {
+                //     // Deploy the build to your server or environment
+                //     // This is a placeholder and should be replaced with your actual deployment commands
+                //     sh '''
+                //     echo "Deploying application..."
+                //     # Example deployment command:
+                //     # scp -r ./* user@your-server:/path/to/deployment
+                //     '''
+                // }
             }
         }
 
         stage('CodeTesting') {
             steps {
-                script {
-                    // Deploy the build to your server or environment
-                    // This is a placeholder and should be replaced with your actual deployment commands
-                    bat 'scanner_.bat'
-                }
+                echo "CodeTesting Stage"
+                // script {
+                //     // Deploy the build to your server or environment
+                //     // This is a placeholder and should be replaced with your actual deployment commands
+                //     bat 'scanner_.bat'
+                // }
             }
         }
 
         stage('Release') {
             steps {
-                script {
-                    // Release steps, such as tagging a release in your version control system
-                    sh '''
-                    echo "Releasing application..."
-                    # Example release command:
-                    # git tag -a v1.0.0 -m "Release v1.0.0"
-                    # git push --tags
-                    '''
-                }
+                echo "CodeTesting Stage"
+                // script {
+                //     // Release steps, such as tagging a release in your version control system
+                //     sh '''
+                //     echo "Releasing application..."
+                //     # Example release command:
+                //     # git tag -a v1.0.0 -m "Release v1.0.0"
+                //     # git push --tags
+                //     '''
+                // }
             }
         }
     }
