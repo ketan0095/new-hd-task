@@ -14,6 +14,8 @@ const chrome = require("selenium-webdriver/chrome");
       const text = await element.getText();
       console.log(`Anchor text: ${text}`);
     }
+
+    console.log("Selenium testing done successfully !!!");
   } catch (error) {
     console.error("[X] : Error occurred:", error.message);
   } finally {
