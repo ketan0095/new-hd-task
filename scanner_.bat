@@ -1,0 +1,1 @@
+C:\Users\moham\Downloads\sonar-scanner-cli-5.0.1.3006-windows\sonar-scanner-5.0.1.3006-windows\bin\sonar-scanner.bat -D"sonar.projectKey=my-hd-task" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_702d0be7be8538f19cd2a65ee31d90b2e777f544"

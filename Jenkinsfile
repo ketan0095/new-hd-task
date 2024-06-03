@@ -7,12 +7,12 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the source code from the repository
-                checkout scm
-            }
-        }
+        // stage('Checkout') {
+        //     steps {
+        //         // Checkout the source code from the repository
+        //         checkout scm
+        //     }
+        // }
 
         stage('Build') {
             steps {
@@ -28,7 +28,8 @@ pipeline {
             steps {
                 script {
                     // Run tests
-                    sh 'npm test'
+                    // Run Selenium tests
+                    sh 'npm run test:selenium'
                 }
             }
         }
@@ -43,6 +44,16 @@ pipeline {
                     # Example deployment command:
                     # scp -r ./* user@your-server:/path/to/deployment
                     '''
+                }
+            }
+        }
+
+        stage('CodeTesting') {
+            steps {
+                script {
+                    // Deploy the build to your server or environment
+                    // This is a placeholder and should be replaced with your actual deployment commands
+                    bat 'scanner_.bat'
                 }
             }
         }
