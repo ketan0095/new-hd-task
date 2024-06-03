@@ -13,6 +13,13 @@ pipeline {
             steps {
                 // Build the code using Maven or another build automation tool
                 echo "Build Stage"
+
+                bat 'npm install'
+                bat 'npm run build'
+
+                echo "Build Success"
+
+
             }
         }
         stage('Unit and Integration Tests') {
@@ -20,6 +27,8 @@ pipeline {
                 // Run unit tests using JUnit or another test automation tool
                 // Run integration tests using Selenium or another integration testing tool
                 echo "Testing Stage"
+
+                
             }
         }
         stage('Code Analysis') {
