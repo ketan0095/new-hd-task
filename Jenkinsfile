@@ -16,7 +16,7 @@ pipeline {
 
                 bat 'npm install'
                 bat 'npm run build'
-                bat 'npm start'
+                // bat 'npm start'
                 echo "Build Success ########################################"
 
 
