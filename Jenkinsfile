@@ -2,76 +2,90 @@ pipeline {
     agent any
 
     environment {
-        DIRECTORY_PATH = "C:\\ketan personal\\Deakin\\Study Material\\SIT 753\\Week 4\\Deakin-Unit-Page"
-        TESTING_ENVIRONMENT = "nextjs-app-testing-environment"
-        PRODUCTION_ENVIRONMENT = "Ketan_Shetye_nextjs-app-production-environment"
-        JENKINS_LOG_PATH="C:\\ProgramData\\Jenkins\\.jenkins\\jobs\\Github-Jenkins-pipeline\\builds\\21\\log"
+        // Define any environment variables if needed
+        NODE_ENV = 'development'
     }
-    
+
     stages {
+        // stage('Checkout') {
+        //     steps {
+        //         // Checkout the source code from the repository
+        //         checkout scm
+        //     }
+        // }
+
         stage('Build') {
             steps {
-                // Build the code using Maven or another build automation tool
+
                 echo "Build Stage"
+                // script {
+                //     // Install dependencies and build the project
+                //     sh 'npm install'
+                //     sh 'npm run build'
+                // }
             }
         }
-        stage('Unit and Integration Tests') {
+
+        stage('Test') {
+
+            echo "Test Stage"
+            // steps {
+            //     script {
+            //         // Run tests
+            //         // Run Selenium tests
+            //         sh 'npm run test:selenium'
+            //     }
+            // }
+        }
+
+        stage('Deploy') {
             steps {
-                // Run unit tests using JUnit or another test automation tool
-                // Run integration tests using Selenium or another integration testing tool
-                echo "Testing Stage"
+                echo "Deploy Stage"
+                // script {
+                //     // Deploy the build to your server or environment
+                //     // This is a placeholder and should be replaced with your actual deployment commands
+                //     sh '''
+                //     echo "Deploying application..."
+                //     # Example deployment command:
+                //     # scp -r ./* user@your-server:/path/to/deployment
+                //     '''
+                // }
             }
         }
-        stage('Code Analysis') {
+
+        stage('CodeTesting') {
             steps {
-                // Integrate a code analysis tool like SonarQube or Checkstyle
-                echo "Code Analysis Stage"
+                echo "CodeTesting Stage"
+                // script {
+                //     // Deploy the build to your server or environment
+                //     // This is a placeholder and should be replaced with your actual deployment commands
+                //     bat 'scanner_.bat'
+                // }
             }
         }
-        stage('Security Scan') {
+
+        stage('Release') {
             steps {
-                // Perform a security scan using tools like OWASP ZAP or SonarQube
-                echo "Security Stage"
-            }
-        }
-        stage('Deploy to Staging') {
-            steps {
-                // Deploy the application to a staging server, e.g., AWS EC2 instance
-                echo "Deployment Stage"
-            }
-        }
-        stage('Integration Tests on Staging') {
-            steps {
-                // Run integration tests on the staging environment
-                echo "Integration Stage"
-            }
-        }
-        stage('Deploy to Production') {
-            steps {
-                // Deploy the application to a production server, e.g., AWS EC2 instance
-                echo "Production Stage"
+                echo "CodeTesting Stage"
+                // script {
+                //     // Release steps, such as tagging a release in your version control system
+                //     sh '''
+                //     echo "Releasing application..."
+                //     # Example release command:
+                //     # git tag -a v1.0.0 -m "Release v1.0.0"
+                //     # git push --tags
+                //     '''
+                // }
             }
         }
     }
 
-
-    post{
-        always{
-            echo 'Pipeline Completed.'
+    post {
+        success {
+            echo 'Pipeline completed successfully.'
         }
-
-        // success{
-        //     emailext body:'Pipeline succeeded. All stages complted.',
-        //              subject: 'Pipeline status: Successful',
-        //              to:'shetyeketan18@gmail.com',
-        //              attachmentsPattern: '**/*.log'
-        // }
-
-        // failure{
-        //     emailext body:'Pipeline failed. Check logs for detail',
-        //              subject: 'Pipeline status: Failure',
-        //              to:'shetyeketan18@gmail.com',
-        //              attachmentsPattern: '**/*.log'
-        // }
+        failure {
+            echo 'Pipeline failed.'
+        }
     }
 }
