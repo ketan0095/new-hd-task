@@ -1,12 +1,5 @@
 pipeline {
     agent any
-
-    environment {
-        DIRECTORY_PATH = "C:\\ketan personal\\Deakin\\Study Material\\SIT 753\\Week 4\\Deakin-Unit-Page"
-        TESTING_ENVIRONMENT = "nextjs-app-testing-environment"
-        PRODUCTION_ENVIRONMENT = "Ketan_Shetye_nextjs-app-production-environment"
-        JENKINS_LOG_PATH="C:\\ProgramData\\Jenkins\\.jenkins\\jobs\\Github-Jenkins-pipeline\\builds\\21\\log"
-    }
     
     stages {
         stage('Build') {
@@ -16,7 +9,7 @@ pipeline {
 
                 bat 'npm install'
                 bat 'npm run build'
-                // bat 'npm start'
+                // bat 'pm2 restart'
                 echo "Build Success ########################################"
 
 
