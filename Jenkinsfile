@@ -16,6 +16,8 @@ pipeline {
 
         stage('Build') {
             steps {
+
+                echo "Build Stage"
                 script {
                     // Install dependencies and build the project
                     sh 'npm install'
@@ -25,6 +27,8 @@ pipeline {
         }
 
         stage('Test') {
+
+            echo "Test Stage"
             steps {
                 script {
                     // Run tests
