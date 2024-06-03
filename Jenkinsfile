@@ -12,12 +12,11 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the code using Maven or another build automation tool
-                echo "Build Stage"
+                echo "Build Stage in progress -----------------------------"
 
                 bat 'npm install'
                 bat 'npm run build'
-
-                echo "Build Success"
+                echo "Build Success ########################################"
 
 
             }
@@ -26,23 +25,21 @@ pipeline {
             steps {
                 // Run unit tests using JUnit or another test automation tool
                 // Run integration tests using Selenium or another integration testing tool
-                echo "Testing Stage"
-
-                
+                echo "Testing Stage in progress -----------------------------"
+                bat 'npm run test:selenium'
+                echo "Testing Success ########################################"     
             }
         }
         stage('Code Analysis') {
             steps {
                 // Integrate a code analysis tool like SonarQube or Checkstyle
-                echo "Code Analysis Stage"
+                echo "Code Analysis Stage -----------------------------"
+                bat 'scanner_.bat'
+                echo "Code Analysis Success ########################################"  
             }
         }
-        stage('Security Scan') {
-            steps {
-                // Perform a security scan using tools like OWASP ZAP or SonarQube
-                echo "Security Stage"
-            }
-        }
+
+
         stage('Deploy to Staging') {
             steps {
                 // Deploy the application to a staging server, e.g., AWS EC2 instance
