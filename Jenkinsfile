@@ -16,6 +16,7 @@ pipeline {
 
                 bat 'npm install'
                 bat 'npm run build'
+                bat 'npm start'
                 echo "Build Success ########################################"
 
 
@@ -66,18 +67,18 @@ pipeline {
             echo 'Pipeline Completed.'
         }
 
-        // success{
-        //     emailext body:'Pipeline succeeded. All stages complted.',
-        //              subject: 'Pipeline status: Successful',
-        //              to:'shetyeketan18@gmail.com',
-        //              attachmentsPattern: '**/*.log'
-        // }
+        success{
+            emailext body:'Pipeline succeeded. All stages complted.',
+                     subject: 'Pipeline status: Successful',
+                     to:'shetyeketan18@gmail.com',
+                     attachmentsPattern: '**/*.log'
+        }
 
-        // failure{
-        //     emailext body:'Pipeline failed. Check logs for detail',
-        //              subject: 'Pipeline status: Failure',
-        //              to:'shetyeketan18@gmail.com',
-        //              attachmentsPattern: '**/*.log'
-        // }
+        failure{
+            emailext body:'Pipeline failed. Check logs for detail',
+                     subject: 'Pipeline status: Failure',
+                     to:'shetyeketan18@gmail.com',
+                     attachmentsPattern: '**/*.log'
+        }
     }
 }
